@@ -1,0 +1,50 @@
+<div class="fadein animation-duration-1000">
+  <img class="background-image" src="../assets/pexels-karolina-grabowska-5632402.jpg" alt="NoImageFound" />
+</div>
+
+<div class="mt-5 login-register-container flipright animation-duration-1000">
+  <p-card header="Login">
+    <form #SignInForm="ngForm" (ngSubmit)="onSignIn(SignInForm)">
+      <div class="mb-4">
+        <span class="p-float-label">
+          <input required ngModel name="email" #email="ngModel" style="width: 300px" id="float-input-email" type="email"
+            pInputText />
+          <label for="float-input-email">Email</label>
+        </span>
+        <div class="text-danger" *ngIf="email.touched && email.errors?.['required']">
+          Email is required
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <span class="p-float-label">
+          <input required ngModel name="username" #username="ngModel" style="width: 300px" id="float-input-username"
+            type="text" pInputText />
+          <label for="float-input-username">Username</label>
+        </span>
+        <div class="text-danger" *ngIf="username.touched && username.errors?.['required']">
+          Username is required
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <span class="p-float-label">
+          <p-password [(ngModel)]="password" name="password" required [toggleMask]="true" class="mb-2"
+            inputId="float-input-password" #passwordField="ngModel"
+            styleClass="p-password p-component p-inputwrapper p-input-icon-right" [style]="{ width: '100%' }"
+            [inputStyle]="{ width: '100%' }"></p-password>
+          <label for="float-input-password">Password</label>
+        </span>
+        <div class="text-danger" *ngIf="passwordField.touched && passwordField.errors?.['required']">
+          Password is required
+        </div>
+      </div>
+
+      <div class="row">
+        <button pButton class="w-full" label="Login" size="small" type="submit" [disabled]="SignInForm.invalid"></button>
+      </div>
+    </form>
+
+    <p class="mt-2">Don't have an account? <a routerLink="/auth/register">Register</a>
+  </p-card>
+</div>
